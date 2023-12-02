@@ -3,14 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CodeDisplayComponent } from './code-display/code-display.component';
+import { CodeInputComponent } from './code-input/code-input.component';
+import { CodeDisplaySectionComponent } from './code-display-section/code-display-section.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CodeDisplayComponent,
+    CodeInputComponent,
+    CodeDisplaySectionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

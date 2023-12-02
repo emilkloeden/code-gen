@@ -1,0 +1,9 @@
+<main>
+  <div class="row">
+    <h2>{{ entity }}</h2>
+    <button (click)="copyToClipboard()">Copy</button>
+  </div>
+  <div class="row">
+    <code-display [outputText]="outputText"></code-display>
+  </div>
+</main>
