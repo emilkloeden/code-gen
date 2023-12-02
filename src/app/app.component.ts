@@ -10,6 +10,10 @@ export class AppComponent {
   title = 'code-gen';
   repositoryRestResourceText: string = ''
   entityText: string = ''
+  repositoryText: string = ''
+  controllerText: string = ''
+  serviceText: string = ''
+  errorText: string = ''
   inputText: string =`{
     "name": "user",
     "attributes": [
@@ -39,9 +43,20 @@ export class AppComponent {
 
 constructor(private springService: SpringService) {}
   convertText() {
-    this.repositoryRestResourceText =this.springService.createRepositoryRestResource(this.inputText)
-    this.entityText = this.springService.createEntity(this.inputText)
-    console.log(this.repositoryRestResourceText)
+    try {
+      this.errorText = '';
+      this.springService.updateEntity(this.inputText)
+      this.repositoryRestResourceText =this.springService.createRepositoryRestResource()
+      this.entityText = this.springService.createEntity()
+      this.repositoryText = this.springService.createRepository()
+      this.controllerText = this.springService.createController()
+      this.serviceText = this.springService.createService()
+    } catch(e: any) {
+      console.error(e)
+      console.warn(e.message)
+      this.errorText = e;
+    }
+      console.log(this.repositoryRestResourceText)
   }
 
   receivedTextChange(text: string): void {

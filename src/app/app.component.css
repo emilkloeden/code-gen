@@ -12,3 +12,7 @@ main {
 code-input {
   font-size: 16px;
 }
+
+.overlayable {
+  position: relative;
+}
