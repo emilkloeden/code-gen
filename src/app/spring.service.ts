@@ -121,7 +121,7 @@ public class ${pascalName} {
   private addAttributeText(attributes: Attribute[]) {
     return attributes.map(attribute => {
       const type = attribute.type as SQLDataType;
-      const javaType = convertSqlToJavaDataType(attribute.type);
+      const javaType = convertSqlToJavaDataType(type);
       if (!javaType) {
         throw new Error(`No or invalid type supplied for attribute: ${JSON.stringify(attribute)}`)
       }
