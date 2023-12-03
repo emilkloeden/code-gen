@@ -120,7 +120,12 @@ public class ${pascalName} {
 
   private addAttributeText(attributes: Attribute[]) {
     return attributes.map(attribute => {
-      const pascalIdType = pascal(attribute.type)
+      const type = attribute.type as SQLDataType;
+      const javaType = convertSqlToJavaDataType(attribute.type);
+      if (!javaType) {
+        throw new Error(`No or invalid type supplied for attribute: ${JSON.stringify(attribute)}`)
+      }
+      const pascalIdType = pascal(javaType)
       const camelName = camel(attribute.name)
       return `private ${pascalIdType} ${camelName};`
     }).join('\n  ')
