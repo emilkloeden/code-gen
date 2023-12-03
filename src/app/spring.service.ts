@@ -69,10 +69,9 @@ export class SpringService {
       }
       const idType = this.findIdType();
       return `@RepositoryRestResource(collectionResourceRel = "${kebabPlural}", path= "${kebabPlural}")
-  public interface ${pascalName}Repository extends JpaRepository<${pascalName}, ${idType}> {
-  
-  }
-      `
+public interface ${pascalName}Repository extends JpaRepository<${pascalName}, ${idType}> {
+
+}`
     } catch(e: any) {
       throw e;
     }
@@ -90,8 +89,8 @@ import lombok.Data
 @Data
 @Entity
 public class ${pascalName} {
-  ${this.addIdColumnText(this.entity)}
-  ${this.addAttributeText(this.entity.attributes)}
+    ${this.addIdColumnText(this.entity)}
+    ${this.addAttributeText(this.entity.attributes)}
 }`
   }
 
@@ -113,7 +112,7 @@ public class ${pascalName} {
   private addIdColumnText(entity: Entity): string {
     if (this.idAttribute) {
       return `@Id
-  @GeneratedValue(strategy = GenerationType.AUTO)`
+    @GeneratedValue(strategy = GenerationType.AUTO)`
     }
     return '';
   }
@@ -128,7 +127,7 @@ public class ${pascalName} {
       const pascalIdType = pascal(javaType)
       const camelName = camel(attribute.name)
       return `private ${pascalIdType} ${camelName};`
-    }).join('\n  ')
+    }).join('\n    ')
   }
 
   public createService() {
