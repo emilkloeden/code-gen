@@ -4,10 +4,7 @@
 </nav>
 <main>
   <div class="column">
-    <code-input
-      [initialText]="inputText"
-      (textAreaTextChanged)="receivedTextChange($event)"
-    ></code-input>
+    <entity-form (updateEntityForm)="receivedTextChange($event)"></entity-form>
   </div>
   <div class="column overlayable">
     <router-outlet></router-outlet>
