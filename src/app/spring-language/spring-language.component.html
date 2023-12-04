@@ -1,0 +1,26 @@
+<error-overlay *ngIf="errorText" [errorText]="errorText"></error-overlay>
+
+<spring-logo></spring-logo>
+
+<code-display-section
+  [entity]="'Repository Rest Resource'"
+  [outputText]="repositoryRestResourceText"
+></code-display-section>
+<code-display-section
+  [entity]="'Entity'"
+  [outputText]="entityText"
+></code-display-section>
+
+<code-display-section
+  [entity]="'Repository'"
+  [outputText]="repositoryText"
+></code-display-section>
+<code-display-section
+  [entity]="'Controller'"
+  [outputText]="controllerText"
+></code-display-section>
+
+<code-display-section
+  [entity]="'Service'"
+  [outputText]="serviceText"
+></code-display-section>

@@ -1,3 +1,7 @@
+<nav>
+  <a [routerLink]="['spring']">Spring</a>
+  <a [routerLink]="['typescript']">Typescript</a>
+</nav>
 <main>
   <div class="column">
     <code-input
@@ -6,29 +10,6 @@
     ></code-input>
   </div>
   <div class="column overlayable">
-    <error-overlay *ngIf="errorText" [errorText]="errorText"></error-overlay>
-
-    <code-display-section
-      [entity]="'Repository Rest Resource'"
-      [outputText]="repositoryRestResourceText"
-    ></code-display-section>
-    <code-display-section
-      [entity]="'Entity'"
-      [outputText]="entityText"
-    ></code-display-section>
-
-    <code-display-section
-      [entity]="'Repository'"
-      [outputText]="repositoryText"
-    ></code-display-section>
-    <code-display-section
-      [entity]="'Controller'"
-      [outputText]="controllerText"
-    ></code-display-section>
-
-    <code-display-section
-      [entity]="'Service'"
-      [outputText]="serviceText"
-    ></code-display-section>
+    <router-outlet></router-outlet>
   </div>
 </main>

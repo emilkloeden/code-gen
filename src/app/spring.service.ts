@@ -2,63 +2,17 @@ import { Injectable } from '@angular/core';
 import { camel, kebab, pascal, lower, plural } from "src/utils/casing";
 import type { SQLDataType, JavaDataType } from "src/utils/typemappings";
 import {convertSqlToJavaDataType} from "src/utils/typemappings";
+import { Attribute, Entity } from "./interfaces/entity";
+import { LanguageService } from "./language.service";
 
-interface Attribute {
-  name: string;
-  type: SQLDataType;
-  isId: boolean;
-}
 
-interface Entity {
-  name: string;
-  attributes: Attribute[]
-}
 
 @Injectable({
   providedIn: 'root'
 })
-export class SpringService {
-  entity: Entity = {} as Entity
-  idAttribute?: Attribute
-  
-  constructor() { }
-
-  
-
-  public updateEntity(text: string): void {
-    this.setEntityAndIdAttribute(text);
-  }
-
-  private setEntityAndIdAttribute(text: string): void {
-    try {
-      const entity = JSON.parse(text) as Entity;
-      if (isInvalidEntity(entity)) {
-        throw new Error('This is rethrown')
-      }
-      this.entity = entity
-      
-      this.findEntityIdAttribute();
-    } catch (e) {
-      throw new Error(`Invalid Json structure. You want something like this:
-      
-      {
-        "name": string,
-        "attributes": [
-          {
-            "name": string,
-            "type": string,
-            "isId": boolean
-          }
-        ]
-      }`)
-    }
-    
-  }
-  private findEntityIdAttribute(): void {
-    this.idAttribute = this.entity
-    .attributes
-    .find(attr => attr.isId)
-  }
+export class SpringService extends LanguageService {
+ 
+  constructor() { super() }
 
   createRepositoryRestResource(): string {
     try {
@@ -264,9 +218,5 @@ public class ${pascalName}Controller {
 }
 
 
-function isInvalidEntity(entity: Entity) {
-  return !entity.name || !entity.attributes || entity.attributes.some(attr => {
-    return !attr.name || !attr.type || !attr.hasOwnProperty('isId');
-  });
-}
+
 

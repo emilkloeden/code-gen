@@ -13,10 +13,33 @@ main {
   min-width: 50ch;
   min-height: 90%;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-items: start;
+  flex-wrap: wrap;
+}
 code-input {
   font-size: 16px;
 }
 
 .overlayable {
   position: relative;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  color: white;
+  background-color: black;
+  line-height: 2em;
+  padding: 1em;
+  gap: 1em;
+}
+
+nav a {
+  color: white;
+  font-variant: small-caps;
 }
