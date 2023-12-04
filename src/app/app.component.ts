@@ -61,8 +61,6 @@ constructor(private springService: SpringService, private typescriptService: Typ
       this.typescriptService.updateEntity(this.inputText);
       this.typescriptInterfaceText = this.typescriptService.createInterface()
     } catch(e: any) {
-      console.error(e)
-      console.warn(e.message)
       this.errorText = e;
     }
   }

@@ -36,10 +36,7 @@ export class SpringLanguageComponent implements OnInit {
       this.controllerText = this.springService.createController()
       this.serviceText = this.springService.createService()
     }catch(e: any) {
-      console.error(e)
-      console.warn(e.message)
       this.errorText = e;
     }
-      console.log(this.repositoryRestResourceText)
   }
 }

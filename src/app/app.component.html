@@ -1,8 +1,6 @@
 <nav>
-  <a [routerLink]="[{ outlets: { languageOutlet: ['spring'] } }]">Spring</a>
-  <a [routerLink]="[{ outlets: { languageOutlet: ['typescript'] } }]"
-    >Typescript</a
-  >
+  <a [routerLink]="['spring']">Spring</a>
+  <a [routerLink]="['typescript']">Typescript</a>
 </nav>
 <main>
   <div class="column">
@@ -12,6 +10,6 @@
     ></code-input>
   </div>
   <div class="column overlayable">
-    <router-outlet name="languageOutlet"></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 </main>

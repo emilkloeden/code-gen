@@ -27,8 +27,6 @@ export class TypescriptLanguageComponent implements OnInit {
       this.typescriptService.updateEntity(this.inputText)
       this.interfaceText =this.typescriptService.createInterface()
     } catch(e: any) {
-      console.error(e)
-      console.warn(e.message)
       this.errorText = e;
     }
   }

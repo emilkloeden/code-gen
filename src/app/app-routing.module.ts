@@ -7,17 +7,15 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: "full",
-    redirectTo: '/(languageOutlet:spring)'
+    redirectTo: '/spring'
   },
   {
     path: 'spring',
     component: SpringLanguageComponent,
-    outlet: 'languageOutlet',
   },
   {
     path: 'typescript',
     component: TypescriptLanguageComponent,
-    outlet: 'languageOutlet',
   },
 ];
 
