@@ -17,13 +17,16 @@ export class LanguageService {
     try {
       const entity = JSON.parse(text) as Entity;
       if (isInvalidEntity(entity)) {
-        throw new Error('This is rethrown')
+        throw new Error(`This is rethrown:, ${text}`)
       }
       this.entity = entity
       
       this.findEntityIdAttribute();
     } catch (e) {
-      throw new Error(`Invalid Json structure. You want something like this:
+      
+      throw new Error(`Invalid Json structure. 
+      ${e}
+      You want something like this:
       
       {
         "name": string,

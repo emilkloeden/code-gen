@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { TypescriptLogoComponent } from './typescript-logo/typescript-logo.compo
 import { SpringLogoComponent } from './spring-logo/spring-logo.component';
 import { SpringLanguageComponent } from './spring-language/spring-language.component';
 import { TypescriptLanguageComponent } from './typescript-language/typescript-language.component';
+import { EntityFormComponent } from './entity-form/entity-form.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { TypescriptLanguageComponent } from './typescript-language/typescript-la
     TypescriptLogoComponent,
     SpringLogoComponent,
     SpringLanguageComponent,
-    TypescriptLanguageComponent
+    TypescriptLanguageComponent,
+    EntityFormComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule
     
   ],
   providers: [],
