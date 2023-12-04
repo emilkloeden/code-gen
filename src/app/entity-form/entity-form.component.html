@@ -1,0 +1,57 @@
+<form [formGroup]="entityForm" (ngSubmit)="onSubmit()">
+  <h2>Entity</h2>
+  <div class="row">
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" formControlName="name" />
+  </div>
+  <h2>Attributes</h2>
+  <div formArrayName="attributes">
+    <div *ngFor="let field of attributes.controls; let i = index">
+      <div class="row" [formGroupName]="i">
+        <label for="FieldNameInput"> Name:</label>
+        <input type="text" id="NameInput" formControlName="name" />
+
+        <label for="fieldTypeInput">Field Type:</label>
+        <select id="fieldTypeInput" formControlName="type">
+          <option value="int">int</option>
+          <option value="integer">integer</option>
+          <option value="bigint">bigint</option>
+          <option value="smallint">smallint</option>
+          <option value="real">real</option>
+          <option value="float">float</option>
+          <option value="double">double</option>
+          <option value="decimal">decimal</option>
+          <option value="numeric">numeric</option>
+          <option value="nchar">nchar</option>
+          <option value="char">char</option>
+          <option value="varchar">varchar</option>
+          <option value="nvarchar">nvarchar</option>
+          <option value="tinyint">tinyint</option>
+          <option value="bit">bit</option>
+          <option value="date">date</option>
+          <option value="datetime">datetime</option>
+          <option value="binary">binary</option>
+          <option value="varbinary">varbinary</option>
+          <option value="image">image</option>
+        </select>
+
+        <label for="isIdCheckbox">Is ID:</label>
+        <input type="checkbox" id="isIdCheckbox" formControlName="isId" />
+
+        <button type="button" (click)="removeAttribute(i)">Remove</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <button type="button" (click)="addAttribute()">Add Attribute</button>
+    <button type="button" (click)="clearAttributes()">Clear Attributes</button>
+    <button type="submit">Submit</button>
+  </div>
+  <p>
+    Form Status:
+    <span [ngStyle]="{ color: entityForm.invalid ? 'red' : 'inherit' }">
+      {{ entityForm.status }}</span
+    >
+  </p>
+  <p>Form Value: {{ entityForm.value | json }}</p>
+</form>
