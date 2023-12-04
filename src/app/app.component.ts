@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { SpringService } from "./spring.service";
 import { TypescriptService } from "./typescript.service";
+import { SharedService } from "./shared.service";
 
 @Component({
   selector: 'app-root',
@@ -47,7 +48,7 @@ export class AppComponent {
   }
 `;
 
-constructor(private springService: SpringService, private typescriptService: TypescriptService) {}
+constructor(private springService: SpringService, private typescriptService: TypescriptService, private sharedService: SharedService) {}
   convertText() {
     try {
       this.errorText = '';
@@ -64,12 +65,10 @@ constructor(private springService: SpringService, private typescriptService: Typ
       console.warn(e.message)
       this.errorText = e;
     }
-      console.log(this.repositoryRestResourceText)
   }
 
   receivedTextChange(text: string): void {
     this.inputText = text;
-    this.convertText();
-
+    this.sharedService.setInputText(text);
   }
 }
