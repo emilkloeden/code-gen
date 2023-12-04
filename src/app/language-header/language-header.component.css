@@ -1,0 +1,10 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+svg {
+  max-height: 5rem;
+}

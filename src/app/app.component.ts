@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SpringService } from "./spring.service";
+import { TypescriptService } from "./typescript.service";
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,17 @@ import { SpringService } from "./spring.service";
 })
 export class AppComponent {
   title = 'code-gen';
+  // Spring
   repositoryRestResourceText: string = ''
   entityText: string = ''
   repositoryText: string = ''
   controllerText: string = ''
   serviceText: string = ''
+  // Typescript
+  typescriptInterfaceText: string = ''
+
   errorText: string = ''
+  
   inputText: string =`{
     "name": "user",
     "attributes": [
@@ -41,7 +47,7 @@ export class AppComponent {
   }
 `;
 
-constructor(private springService: SpringService) {}
+constructor(private springService: SpringService, private typescriptService: TypescriptService) {}
   convertText() {
     try {
       this.errorText = '';
@@ -51,6 +57,8 @@ constructor(private springService: SpringService) {}
       this.repositoryText = this.springService.createRepository()
       this.controllerText = this.springService.createController()
       this.serviceText = this.springService.createService()
+      this.typescriptService.updateEntity(this.inputText);
+      this.typescriptInterfaceText = this.typescriptService.createInterface()
     } catch(e: any) {
       console.error(e)
       console.warn(e.message)

@@ -1,3 +1,10 @@
+<nav>
+  <a [routerLink]="[{ outlets: { languageOutlet: ['spring'] } }]">Spring</a>
+  <a [routerLink]="[{ outlets: { languageOutlet: ['typescript'] } }]"
+    >Typescript</a
+  >
+</nav>
+<!-- <router-outlet name="languageOutlet"></router-outlet> -->
 <main>
   <div class="column">
     <code-input
@@ -7,7 +14,10 @@
   </div>
   <div class="column overlayable">
     <error-overlay *ngIf="errorText" [errorText]="errorText"></error-overlay>
-
+    <div class="row">
+      <app-language-header [title]="'SpringBoot'"> </app-language-header>
+      <spring-logo style="max-width: 5rem"></spring-logo>
+    </div>
     <code-display-section
       [entity]="'Repository Rest Resource'"
       [outputText]="repositoryRestResourceText"
@@ -29,6 +39,14 @@
     <code-display-section
       [entity]="'Service'"
       [outputText]="serviceText"
+    ></code-display-section>
+    <div class="row">
+      <h2>Typescript</h2>
+      <typescript-logo></typescript-logo>
+    </div>
+    <code-display-section
+      [entity]="'Interface'"
+      [outputText]="typescriptInterfaceText"
     ></code-display-section>
   </div>
 </main>
