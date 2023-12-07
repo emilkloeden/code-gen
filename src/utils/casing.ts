@@ -51,7 +51,7 @@ function _toWords(str: string) {
     return _toPascalCase(words);
   }
   
-  export function toSnakeCase(str: string) {
+  export function snake(str: string) {
     const words = _toWords(str);
     return _toSnakeCase(words);
   }
