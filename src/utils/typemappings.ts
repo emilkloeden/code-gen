@@ -32,7 +32,21 @@ export type JavaDataType =
   | 'Date'
   | 'Byte[]';
 
- export type TypescriptDataType = 'string' | 'number' | 'boolean' | 'Date' | 'Byte[]'
+export type TypescriptDataType = 'string' | 'number' | 'boolean' | 'Date' | 'Byte[]'
+
+export type PythonDataType = 
+| 'int'
+| 'float'
+| 'complex'
+| 'bool'
+| 'str'
+| 'bytes'
+| 'bytearray'
+| 'datetime.datetime'
+| 'datetime.date'
+| 'decimal.Decimal'
+| 'long'
+
 
 export const sqlToJavaDataType: Map<SQLDataType, JavaDataType> = new Map();
 sqlToJavaDataType.set('int', 'Integer');
@@ -78,10 +92,39 @@ sqlToTypescriptDataType.set('binary', 'Byte[]');
 sqlToTypescriptDataType.set('varbinary', 'Byte[]');
 sqlToTypescriptDataType.set('image', 'Byte[]');
 
+const sqlToPythonDataType : Map<SQLDataType, PythonDataType> = new Map();
+sqlToPythonDataType.set('int', 'int');
+sqlToPythonDataType.set('integer', 'int');
+sqlToPythonDataType.set('bigint', 'int');
+sqlToPythonDataType.set('smallint', 'int');
+sqlToPythonDataType.set('real', 'float');
+sqlToPythonDataType.set('float', 'float');
+sqlToPythonDataType.set('double', 'long');
+sqlToPythonDataType.set('decimal', 'decimal.Decimal');
+sqlToPythonDataType.set('numeric', 'int');
+sqlToPythonDataType.set('nchar', 'str');
+sqlToPythonDataType.set('char', 'str');
+sqlToPythonDataType.set('varchar', 'str');
+sqlToPythonDataType.set('nvarchar', 'str');
+sqlToPythonDataType.set('tinyint', 'int');
+sqlToPythonDataType.set('bit', 'bool');
+sqlToPythonDataType.set('date', 'datetime.date');
+sqlToPythonDataType.set('datetime', 'datetime.datetime');
+sqlToPythonDataType.set('binary', 'bytearray');
+sqlToPythonDataType.set('varbinary', 'bytearray');
+sqlToPythonDataType.set('image', 'bytearray');
+
+
+
 export function convertSqlToJavaDataType(sqlDataType: SQLDataType) {
   return sqlToJavaDataType.get(sqlDataType);
 }
 
 export function convertSqlToTypescriptDataType(sqlDataType: SQLDataType) {
   return sqlToTypescriptDataType.get(sqlDataType);
+}
+
+
+export function convertSqlToPythonDataType(sqlDataType: SQLDataType) {
+  return sqlToPythonDataType.get(sqlDataType);
 }

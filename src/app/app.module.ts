@@ -16,6 +16,8 @@ import { SpringLogoComponent } from './spring-logo/spring-logo.component';
 import { SpringLanguageComponent } from './spring-language/spring-language.component';
 import { TypescriptLanguageComponent } from './typescript-language/typescript-language.component';
 import { EntityFormComponent } from './entity-form/entity-form.component';
+import { PythonLogoComponent } from './python-logo/python-logo.component';
+import { PythonLanguageComponent } from './python-language/python-language.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { EntityFormComponent } from './entity-form/entity-form.component';
     SpringLogoComponent,
     SpringLanguageComponent,
     TypescriptLanguageComponent,
-    EntityFormComponent
+    EntityFormComponent,
+    PythonLogoComponent,
+    PythonLanguageComponent
   ],
   imports: [
     BrowserModule,

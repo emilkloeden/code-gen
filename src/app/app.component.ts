@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SpringService } from "./spring.service";
+import { PythonService } from "./python.service";
 import { TypescriptService } from "./typescript.service";
 import { SharedService } from "./shared.service";
 
@@ -18,6 +19,9 @@ export class AppComponent {
   serviceText: string = ''
   // Typescript
   typescriptInterfaceText: string = ''
+  // Python
+  pythonDataclassText: string = ''
+
 
   errorText: string = ''
   
@@ -48,7 +52,11 @@ export class AppComponent {
   }
 `;
 
-constructor(private springService: SpringService, private typescriptService: TypescriptService, private sharedService: SharedService) {}
+constructor(
+  private springService: SpringService, 
+  private typescriptService: TypescriptService,
+  private pythonService: PythonService,
+  private sharedService: SharedService) {}
   convertText() {
     try {
       this.errorText = '';
@@ -60,6 +68,8 @@ constructor(private springService: SpringService, private typescriptService: Typ
       this.serviceText = this.springService.createService()
       this.typescriptService.updateEntity(this.inputText);
       this.typescriptInterfaceText = this.typescriptService.createInterface()
+      this.pythonService.updateEntity(this.inputText)
+      this.pythonDataclassText = this.pythonService.createDataclass()
     } catch(e: any) {
       this.errorText = e;
     }
